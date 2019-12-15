@@ -1,6 +1,3 @@
-#target folder
-/target/
-
 #InteliJ Idea settings of the project
 /.idea/
 
@@ -9,3 +6,6 @@ out/
 
 #files with description of the project structure
 *.iml
+
+#target folder
+/target/
