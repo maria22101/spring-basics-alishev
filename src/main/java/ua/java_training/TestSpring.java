@@ -9,10 +9,16 @@ public class TestSpring {
         );
 
         MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
-        musicPlayer.playMusic();
+        System.out.println(musicPlayer.getName());
+        System.out.println(musicPlayer.getVolume());
 
-        Computer computer = context.getBean("computer", Computer.class);
-        System.out.println(computer.toString());
+        ClassicalMusic classicalMusic1 = context.getBean("classicalMusic", ClassicalMusic.class);
+        ClassicalMusic classicalMusic2 = context.getBean("classicalMusic", ClassicalMusic.class);
+        System.out.println(classicalMusic1 == classicalMusic2); // true when @Scope - singleton, false - when prototype
+
+
+//        Computer computer = context.getBean("computer", Computer.class);
+//        System.out.println(computer.toString());
 
 //        musicPlayer.playMusic();
 //        System.out.println(musicPlayer.getName());
