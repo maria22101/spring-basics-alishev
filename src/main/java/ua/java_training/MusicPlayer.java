@@ -1,41 +1,49 @@
 package ua.java_training;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MusicPlayer {
-    private List<Music> music = new ArrayList<>();
-    private String name;
-    private int volume;
+    private ClassicalMusic classicalMusic;
+    private RockMusic rockMusic;
 
-    public MusicPlayer(List<Music> music) {
-        this.music = music;
+    @Autowired // here two dependencies will be injected accordingly
+    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic) {
+        this.classicalMusic = classicalMusic;
+        this.rockMusic = rockMusic;
     }
 
-    public MusicPlayer() {
+    String playMusic() {
+        return "Playing: " + classicalMusic.getSong();
     }
 
-    public void setMusic(List<Music> music) {
-        this.music = music;
-    }
+//    private List<Music> music = new ArrayList<>();
+//    private String name;
+//    private int volume;
+//
+//    public void setMusic(Music music) {
+//        this.music = music;
+//    }
+//
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+//
+//    public int getVolume() {
+//        return volume;
+//    }
+//
+//    public void setVolume(int volume) {
+//        this.volume = volume;
+//    }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getVolume() {
-        return volume;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
-
-    void playMusic() {
-        music.forEach(m -> System.out.println("Playing: " + m.getSong()));
-    }
+    // method if a field field List<Music> music exist
+//    void playMusic() {
+//        music.forEach(m -> System.out.println("Playing: " + m.getSong()));
+//    }
 }

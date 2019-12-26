@@ -7,35 +7,42 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
+<!--    linking with property file:-->
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
-    <bean id="classicalMusicBean"
-          class="ua.java_training.ClassicalMusic"
-          init-method="doMyInit"
-          destroy-method="doMydestroy"
-          factory-method="getClassicalMusic">
-    </bean>
+<!--    // xml configuration-->
+<!--    <bean id="classicalMusicBean"-->
+<!--          class="ua.java_training.ClassicalMusic"-->
+<!--          init-method="doMyInit"-->
+<!--          destroy-method="doMydestroy"-->
+<!--          factory-method="getClassicalMusic">-->
+<!--    </bean>-->
 
-    <bean id="rockMusicBean"
-          class="ua.java_training.RockMusic">
-    </bean>
+<!--    xml configuration-->
+<!--    <bean id="rockMusicBean"-->
+<!--          class="ua.java_training.RockMusic">-->
+<!--    </bean>-->
 
-    <bean id="folkMusicBean"
-          class="ua.java_training.FolkMusic">
-    </bean>
+<!--    annotation configuration:-->
+    <context:component-scan base-package="ua.java_training"/>
+    
+<!--    <bean id="folkMusicBean"-->
+<!--          class="ua.java_training.FolkMusic">-->
+<!--    </bean>-->
 
-    <bean id="musicPlayer"
-          class="ua.java_training.MusicPlayer">
-        <property name="music">
-            <list>
-                <ref bean="classicalMusicBean"/>
-                <ref bean="rockMusicBean"/>
-                <ref bean="folkMusicBean"/>
-            </list>
-        </property>
+<!--    xml configuration for musicPlayer bean where there is field List<Music> music-->
+<!--    <bean id="musicPlayer"-->
+<!--          class="ua.java_training.MusicPlayer">-->
+<!--        <property name="music">-->
+<!--            <list>-->
+<!--                <ref bean="classicalMusicBean"/>-->
+<!--                <ref bean="rockMusicBean"/>-->
+<!--                <ref bean="folkMusicBean"/>-->
+<!--            </list>-->
+<!--        </property>-->
 
-        <property name="name" value="${musicPlayer.name}"/>
-        <property name="volume" value="${musicPlayer.volume}"/>
-    </bean>
+<!--        <property name="name" value="${musicPlayer.name}"/>-->
+<!--        <property name="volume" value="${musicPlayer.volume}"/>-->
+<!--    </bean>-->
 
 </beans>
